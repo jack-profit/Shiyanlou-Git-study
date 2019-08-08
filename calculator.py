@@ -35,8 +35,11 @@ class UserData(object):
 
 
 if __name__ == '__main__':
-	argv = sys.argv[1:]
+	argv = sys.argv[1:]	# 获取交互行参数
 	if len(argv) == 6:
-		pass
+
+		configdirt = Config(argv[argv.index('-c')+1])
+		configdirt.get_config()
+
 	else:
 		raise 'Paramters Error'
