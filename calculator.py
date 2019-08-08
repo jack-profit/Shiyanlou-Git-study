@@ -14,8 +14,10 @@ class Config(object):
 	# 读取文件内容
 	def get_config(self):
 		with open(self._file) as f:
-			print(csv.reader(f))
-			# for k in
+			# print(csv.reader(f))
+			for k in csv.reader(f):
+				c_list = k.split('=')	# 用=分割字符串
+				self._config[c_list[0].strip()] = c_list[1].strip()	# 将分割后的两个元素添加到字典中
 
 
 # 类:处理员工数据
@@ -40,6 +42,7 @@ if __name__ == '__main__':
 
 		configdirt = Config(argv[argv.index('-c')+1])
 		configdirt.get_config()
+		print(configdirt._config)
 
 	else:
 		raise 'Paramters Error'
