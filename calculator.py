@@ -6,43 +6,44 @@ import sys,csv
 # 类:处理配置文件
 class Config(object):
 
-	def __init__(self, configfile):
-		self._file = configfile
-		self._config = {}
-		pass
+    def __init__(self, configfile):
+        self._file = configfile
+        self._config = {}
+        pass
 
-	# 读取文件内容
-	def get_config(self):
-		with open(self._file) as f:
-			# print(csv.reader(f))
-			for k in csv.reader(f):
-				c_list = k.split('=')	# 用=分割字符串
-				self._config[c_list[0].strip()] = c_list[1].strip()	# 将分割后的两个元素添加到字典中
+    # 读取文件内容
+    def get_config(self):
+        with open(self._file) as f:
+            # print(csv.reader(f))
+            for k in csv.reader(f):
+                # print(k)
+                c_list = k[0].split('=')   # 用=分割字符串
+                self._config[c_list[0].strip()] = c_list[1].strip() # 将分割后的两个元素添加到字典中
 
 
 # 类:处理员工数据
 class UserData(object):
 
-	def __init__(self, userdatafile):
-		self.userdata = {}
-		pass
+    def __init__(self, userdatafile):
+        self.userdata = {}
+        pass
 
-	# 计算
-	def calculator(self):
-		pass
+    # 计算
+    def calculator(self):
+        pass
 
-	# 输出到文件
-	def dumptofile(self):
-		pass
+    # 输出到文件
+    def dumptofile(self):
+        pass
 
 
 if __name__ == '__main__':
-	argv = sys.argv[1:]	# 获取交互行参数
-	if len(argv) == 6:
+    argv = sys.argv[1:] # 获取交互行参数
+    if len(argv) == 6:
 
-		configdirt = Config(argv[argv.index('-c')+1])
-		configdirt.get_config()
-		print(configdirt._config)
+        configdirt = Config(argv[argv.index('-c')+1])
+        configdirt.get_config()
+        print(configdirt._config)
 
-	else:
-		raise 'Paramters Error'
+    else:
+        raise 'Paramters Error'
