@@ -33,7 +33,7 @@ class Args:
 
 	def _value_after_option(self, option):
 		try:
-			# huo qu ming ling hang can shu suo yin
+			# 获取命令行参数索引
 			index = self.args.index(option)
 			return self.args[index + 1]
 		except(ValueError, IndexError):
@@ -42,17 +42,17 @@ class Args:
 
 	@property
 	def config_path(self):
-		# pei zhi wen jian lu jing
+		# 配置文件路径
 		return self._value_after_option('-c')
 
 	@property
 	def userdata_path(self):
-		# yuan gong shu ju wen jian lu jing
+		# 员工数据文件路径
 		return self._value_after_option('-d')
 
 	@property
 	def exportfile_path(self):
-		# shu chu wen jian lu jing
+		# 输出文件路径
 		return self._value_after_option('-o')
 
 
